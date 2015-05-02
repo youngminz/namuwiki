@@ -1,0 +1,24 @@
+{
+	"manifest_version": 2,
+	"name": "나무위키",
+	"description": "사용자가 리그베다 위키나 엔하위키 미러로 접속하면 동일한 항목의 나무위키로 이동시킵니다.",
+	"version": "0.1.0",
+	"icons": {
+		"128": "logo.png"
+	},
+	"permissions": [
+		"https://mirror.enha.kr/*",
+		"http://rigvedawiki.net/*"
+	],
+	"content_scripts": [
+		{
+			"matches": [
+				"https://mirror.enha.kr/*",
+				"http://rigvedawiki.net/*"
+			],
+			"js": [
+				"background.js"
+			]
+		}
+	]
+}
