@@ -1,0 +1,22 @@
+body {
+  margin-top: 20px;
+}
+
+h1 {
+  font-weight: 300;
+}
+
+.content h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 0.9;
+  border-bottom: 1px solid #eee;
+}
+
+.content select {
+  margin-left: 20px;
+}
+
+.content .description {
+  margin-bottom: 5px;
+}
