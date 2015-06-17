@@ -1,25 +1,26 @@
 {
     "manifest_version": 2,
     "name": "나무위키",
-    "description": "리그베다 위키나 엔하위키 미러로 접속하면 자동으로 나무위키의 동일한 항목으로 리다이렉션합니다.",
-    "version": "0.3.0",
+    "description": "리그베다 위키, 엔하위키 미러 혹은 미러로 접속하면 자동으로 나무위키의 동일한 항목으로 리다이렉션합니다.",
+    "version": "0.4.0",
     "icons": {
         "128": "logo.png"
     },
     "permissions": [
-        "https://mirror.enha.kr/*",
-        "http://rigvedawiki.net/*",
-        "https://www.google.com/*",
-        "https://www.google.co.kr/*",
-        "http://www.google.com/*",
-        "http://www.google.co.kr/*",
+        "*://mirror.enha.kr/*",
+        "*://rigvedawiki.net/*",
+        "*://mir.pe/*",
+        "*://www.google.com/*",
+        "*://www.google.co.kr/*",
         "storage"
     ],
     "content_scripts": [
         {
             "matches": [
-                "https://mirror.enha.kr/*",
-                "http://rigvedawiki.net/*"
+                "*://mirror.enha.kr/*",
+                "*://rigvedawiki.net/*",
+                "*://mir.pe/*",
+                "*://*.mir.pe/*"
             ],
             "js": [
                 "background.js"
@@ -27,10 +28,8 @@
         },
         {
             "matches": [
-                "https://www.google.com/*",
-                "https://www.google.co.kr/*",
-                "http://www.google.com/*",
-                "http://www.google.co.kr/*"
+                "*://www.google.com/*",
+                "*://www.google.co.kr/*"
             ],
             "js": [
                 "google_result.js"

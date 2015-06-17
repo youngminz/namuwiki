@@ -4,7 +4,10 @@
 ## 로고
 이 확장 프로그램에 사용된 로고 파일의 저작권은 kein님이 가지고 있으며, [CC BY-NC-SA 2.0](https://creativecommons.org/licenses/by-nc-sa/2.0/deed.ko) 라이센스를 따릅니다.
 
-## 변경 사항    
+## 변경 사항
+* 0.4.0: 
+  - 미러 (mir.pe) 지원 추가
+  - 구글 검색 결과에서 클릭 시 FrontPage로 이동되는 버그 수정
 * 0.3.0: Google 검색 결과에서 엔하위키 미러를 나무위키로 수정하도록 변경 (송효진님께서 수고해주셨습니다. 스크립트 출처:
 http://pastebin.com/PVSrYUMF)
 * 0.2.2: 설명 수정
