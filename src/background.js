@@ -14,7 +14,7 @@ chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe"], function (i
         if (rigvedawikiNet === "none") {
             return;
         }
-        page = href.substr(getPosition(href, "/", 5) + 1);
+        page = href.substr(getPosition(href, "/", 3) + 1);
 
         if (rigvedawikiNet === "namu-wiki") {
             window.location.href = "https://namu.wiki/w/" + page;

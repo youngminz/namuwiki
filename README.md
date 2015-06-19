@@ -5,6 +5,8 @@
 이 확장 프로그램에 사용된 로고 파일의 저작권은 kein님이 가지고 있으며, [CC BY-NC-SA 2.0](https://creativecommons.org/licenses/by-nc-sa/2.0/deed.ko) 라이센스를 따릅니다.
 
 ## 변경 사항
+* 0.4.2: 리그베다 위키의 달라진 URL 형식에 대응
+* 0.4.1: Google 검색 결과의 더 보기 및 검색 도구가 작동하지 않는 버그 수정
 * 0.4.0: 
   - 미러 (mir.pe) 지원 추가
   - 구글 검색 결과에서 클릭 시 FrontPage로 이동되는 버그 수정

@@ -21,37 +21,115 @@ chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe"], function (i
 setInterval(function() {
     var as = document.querySelectorAll("a:not(.replaced)");
     if(!as.length) return;
-    for(var i = 0; i < as.length; i ++) {
+    for(var i = 0; i < as.length; i++) {
         (function(a) {
+            var rigvedawikiKrNetRegexOld = new RegExp("https?:\/\/([a-z0-9]+[.])*rigvedawiki\.net\/r1\/wiki.php");
+            var rigvedawikiKrNetRegexNew = new RegExp("https?:\/\/([a-z0-9]+[.])*rigvedawiki\.net");
             var mirrorEnhaKrRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*enha\.kr\/wiki");
             var mirPeRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*mir\.pe\/wiki");
-            if (mirrorEnhaKrRegex.test(a.href) || mirPeRegex.test(a.href)) {
+            if (rigvedawikiKrNetRegexNew.test(a.href) || mirrorEnhaKrRegex.test(a.href) || mirPeRegex.test(a.href)) {
                 a.className += " replaced";
                 
-                if (mirrorEnhaKr == "namu-wiki") {
-                    a.href = a.href.replace(mirrorEnhaKrRegex, "https://namu.wiki/w");
+                // 예전의 URL 형식인지 먼저 확인한다. 이를 통과하게 되면 최신 갱신된 URL 형식의 테스트를 통과할 수 없다.
+                if (rigvedawikiKrNetRegexOld.test(a.href)) {
+                    switch (rigvedawikiNet) {
+                        case "namu-wiki":
+                            a.href = a.href.replace(rigvedawikiKrNetRegexOld, "https://namu.wiki/w");
+                            break;
+                            
+                        case "namu-mirror-wiki":
+                            a.href = a.href.replace(rigvedawikiKrNetRegexOld, "https://namu.mirror.wiki/wiki");
+                            break;
+                            
+                        case "dark-namu-wiki":
+                            a.href = a.href.replace(rigvedawikiKrNetRegexOld, "https://namu.mirror.wiki/wiki");
+                            break;
+                    
+                        default:
+                            a.href = a.href.replace(rigvedawikiKrNetRegexOld, "https://namu.wiki/w");
+                            break;
+                    }
                 }
-                else if (mirrorEnhaKr == "namu-mirror-wiki") {
-                    a.href = a.href.replace(mirrorEnhaKrRegex, "https://namu.mirror.wiki/wiki");
+                
+                // 최근 갱신된 URL 형식일 때 통과된다.
+                if (rigvedawikiKrNetRegexNew.test(a.href)) {
+                    switch (rigvedawikiNet) {
+                        case "namu-wiki":
+                            a.href = a.href.replace(rigvedawikiKrNetRegexNew, "https://namu.wiki/w");
+                            break;
+                            
+                        case "namu-mirror-wiki":
+                            a.href = a.href.replace(rigvedawikiKrNetRegexNew, "https://namu.mirror.wiki/wiki");
+                            break;
+                            
+                        case "dark-namu-wiki":
+                            a.href = a.href.replace(rigvedawikiKrNetRegexNew, "https://namu.mirror.wiki/wiki");
+                            break;
+                    
+                        default:
+                            a.href = a.href.replace(rigvedawikiKrNetRegexNew, "https://namu.wiki/w");
+                            break;
+                    }
                 }
-                else if (mirrorEnhaKr == "dark-namu-wiki") {
-                    a.href = a.href.replace(mirrorEnhaKrRegex, "https://dark.namu.wiki/w");
+                
+                if (mirrorEnhaKrRegex.test(a.href)) {
+                    switch (mirrorEnhaKr) {
+                        case "namu-wiki":
+                            a.href = a.href.replace(mirrorEnhaKrRegex, "https://namu.wiki/w");
+                            break;
+                            
+                        case "namu-mirror-wiki":
+                            a.href = a.href.replace(mirrorEnhaKrRegex, "https://namu.mirror.wiki/wiki");
+                            break;
+                            
+                        case "dark-namu-wiki":
+                            a.href = a.href.replace(mirrorEnhaKrRegex, "https://namu.mirror.wiki/wiki");
+                            break;
+                    
+                        default:
+                            a.href = a.href.replace(mirrorEnhaKrRegex, "https://namu.wiki/w");
+                            break;
+                    }
                 }
-                else {
-                    a.href = a.href.replace(mirrorEnhaKrRegex, "https://namu.wiki/w");
+                
+                if (mirrorEnhaKrRegex.test(a.href)) {
+                    switch (mirrorEnhaKr) {
+                        case "namu-wiki":
+                            a.href = a.href.replace(mirrorEnhaKrRegex, "https://namu.wiki/w");
+                            break;
+                            
+                        case "namu-mirror-wiki":
+                            a.href = a.href.replace(mirrorEnhaKrRegex, "https://namu.mirror.wiki/wiki");
+                            break;
+                            
+                        case "dark-namu-wiki":
+                            a.href = a.href.replace(mirrorEnhaKrRegex, "https://namu.mirror.wiki/wiki");
+                            break;
+                    
+                        default:
+                            a.href = a.href.replace(mirrorEnhaKrRegex, "https://namu.wiki/w");
+                            break;
+                    }
                 }
-
-                if (mirPe == "namu-wiki") {
-                    a.href = a.href.replace(mirPeRegex, "https://namu.wiki/w");
-                }
-                else if (mirPe == "namu-mirror-wiki") {
-                    a.href = a.href.replace(mirPeRegex, "https://namu.mirror.wiki/wiki");
-                }
-                else if (mirPe == "dark-namu-wiki") {
-                    a.href = a.href.replace(mirPeRegex, "https://dark.namu.wiki/w");
-                }
-                else {
-                    a.href = a.href.replace(mirPeRegex, "https://namu.wiki/w");
+                
+                if (mirPeRegex.test(a.href)) {
+                    switch (mirrorEnhaKr) {
+                        case "namu-wiki":
+                            a.href = a.href.replace(mirPeRegex, "https://namu.wiki/w");
+                            break;
+                            
+                        case "namu-mirror-wiki":
+                            a.href = a.href.replace(mirPeRegex, "https://namu.mirror.wiki/wiki");
+                            break;
+                            
+                        case "dark-namu-wiki":
+                            a.href = a.href.replace(mirPeRegex, "https://namu.mirror.wiki/wiki");
+                            break;
+                    
+                        default:
+                            a.href = a.href.replace(mirPeRegex, "https://namu.wiki/w");
+                            break;
+                    }
                 }
                 
                 a.removeAttribute("onmousedown");
