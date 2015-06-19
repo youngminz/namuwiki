@@ -23,37 +23,41 @@ setInterval(function() {
     if(!as.length) return;
     for(var i = 0; i < as.length; i ++) {
         (function(a) {
-            a.className += " replaced";
-               
-            if (mirrorEnhaKr == "namu-wiki") {
-                a.href = a.href.replace(/https?:\/\/([a-z0-9]+[.])*enha\.kr\/wiki/g, "https://namu.wiki/w");
-            }
-            else if (mirrorEnhaKr == "namu-mirror-wiki") {
-                a.href = a.href.replace(/https?:\/\/([a-z0-9]+[.])*enha\.kr\/wiki/g, "https://namu.mirror.wiki/wiki");
-            }
-            else if (mirrorEnhaKr == "dark-namu-wiki") {
-                a.href = a.href.replace(/https?:\/\/([a-z0-9]+[.])*enha\.kr\/wiki/g, "https://dark.namu.wiki/w");
-            }
-            else {
-                a.href = a.href.replace(/https?:\/\/([a-z0-9]+[.])*enha\.kr\/wiki/g, "https://namu.wiki/w");
-            }
+            var mirrorEnhaKrRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*enha\.kr\/wiki");
+            var mirPeRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*mir\.pe\/wiki");
+            if (mirrorEnhaKrRegex.test(a.href) || mirPeRegex.test(a.href)) {
+                a.className += " replaced";
+                
+                if (mirrorEnhaKr == "namu-wiki") {
+                    a.href = a.href.replace(mirrorEnhaKrRegex, "https://namu.wiki/w");
+                }
+                else if (mirrorEnhaKr == "namu-mirror-wiki") {
+                    a.href = a.href.replace(mirrorEnhaKrRegex, "https://namu.mirror.wiki/wiki");
+                }
+                else if (mirrorEnhaKr == "dark-namu-wiki") {
+                    a.href = a.href.replace(mirrorEnhaKrRegex, "https://dark.namu.wiki/w");
+                }
+                else {
+                    a.href = a.href.replace(mirrorEnhaKrRegex, "https://namu.wiki/w");
+                }
 
-            if (mirPe == "namu-wiki") {
-                a.href = a.href.replace(/https?:\/\/([a-z0-9]+[.])*mir\.pe\/wiki/g, "https://namu.wiki/w");
+                if (mirPe == "namu-wiki") {
+                    a.href = a.href.replace(mirPeRegex, "https://namu.wiki/w");
+                }
+                else if (mirPe == "namu-mirror-wiki") {
+                    a.href = a.href.replace(mirPeRegex, "https://namu.mirror.wiki/wiki");
+                }
+                else if (mirPe == "dark-namu-wiki") {
+                    a.href = a.href.replace(mirPeRegex, "https://dark.namu.wiki/w");
+                }
+                else {
+                    a.href = a.href.replace(mirPeRegex, "https://namu.wiki/w");
+                }
+                
+                a.removeAttribute("onmousedown");
+                var b = a.cloneNode(true);
+                a.parentNode.replaceChild(b, a);
             }
-            else if (mirPe == "namu-mirror-wiki") {
-                a.href = a.href.replace(/https?:\/\/([a-z0-9]+[.])*mir\.pe\/wiki/g, "https://namu.mirror.wiki/wiki");
-            }
-            else if (mirPe == "dark-namu-wiki") {
-                a.href = a.href.replace(/https?:\/\/([a-z0-9]+[.])*mir\.pe\/wiki/g, "https://dark.namu.wiki/w");
-            }
-            else {
-                a.href = a.href.replace(/https?:\/\/([a-z0-9]+[.])*mir\.pe\/wiki/g, "https://namu.wiki/w");
-            }
-            
-            a.removeAttribute("onmousedown");
-            var b = a.cloneNode(true);
-            a.parentNode.replaceChild(b, a);
         })(as[i]);
     }
 }, 500);

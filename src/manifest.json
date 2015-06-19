@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "나무위키",
     "description": "리그베다 위키, 엔하위키 미러 혹은 미러로 접속하면 자동으로 나무위키의 동일한 항목으로 리다이렉션합니다.",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "icons": {
         "128": "logo.png"
     },
