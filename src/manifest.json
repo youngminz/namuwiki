@@ -10,6 +10,7 @@
         "*://mirror.enha.kr/*",
         "*://rigvedawiki.net/*",
         "*://mir.pe/*",
+        "*://namu.moe/*",
         "*://www.google.com/*",
         "*://www.google.co.kr/*",
         "storage"
@@ -22,7 +23,9 @@
                 "*://rigvedawiki.net/*",
                 "*://*.rigvedawiki.net/*",
                 "*://mir.pe/*",
-                "*://*.mir.pe/*"
+                "*://*.mir.pe/*",
+                "*://namu.moe/*",
+                "*://*.namu.moe/*"
             ],
             "js": [
                 "background.js"
