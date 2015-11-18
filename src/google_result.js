@@ -113,7 +113,7 @@ setInterval(function() {
                 }
 
                 if (mirPeRegex.test(a.href)) {
-                    switch (mirrorEnhaKr) {
+                    switch (mirPe) {
                         case "namu-wiki":
                             a.href = a.href.replace(mirPeRegex, "https://namu.wiki/w");
                             break;
