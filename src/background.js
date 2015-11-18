@@ -17,12 +17,13 @@ function redirect(page, setting) {
     }
 }
 
-chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe"], function (items) {
-    var href, page, rigvedawikiNet, mirrorEnhaKr, mirPe;
+chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe", "namuMoe"], function (items) {
+    var href, page, rigvedawikiNet, mirrorEnhaKr, mirPe, namuMoe;
 
     rigvedawikiNet = items["rigvedawikiNet"];
     mirrorEnhaKr = items["mirrorEnhaKr"];
     mirPe = items["mirPe"];
+    namuMoe = items["namuMoe"];
 
     href = window.location.href;
     if (href.indexOf("rigvedawiki") != -1) {
@@ -45,6 +46,13 @@ chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe"], function (i
         }
         page = href.substr(getPosition(href, "/", 4) + 1);
         redirect(page, mirPe);
+    }
+    else if (href.indexOf("namu.moe") != -1) {
+        if (namuMoe === "none") {
+            return;
+        }
+        page = href.substr(getPosition(href, "/", 4) + 1);
+        redirect(page, namuMoe);
     }
 
 });
