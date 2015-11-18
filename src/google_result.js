@@ -50,7 +50,7 @@ setInterval(function() {
             var rigvedawikiKrNetRegexNew = new RegExp("https?:\/\/([a-z0-9]+[.])*rigvedawiki\.net");
             var mirrorEnhaKrRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*enha\.kr\/wiki");
             var mirPeRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*mir\.pe\/wiki");
-            var namuMoeRegx = new RegExp("https?:\/\/([a-z0-9]+[.])*namu\.moe\/w");
+            var namuMoeRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*namu\.moe\/w");
             if (rigvedawikiKrNetRegexNew.test(a.href) || mirrorEnhaKrRegex.test(a.href) || mirPeRegex.test(a.href) || namuMoeRegex.test(a.href)) {
                 a.className += " replaced";
 
