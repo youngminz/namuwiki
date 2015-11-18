@@ -2,6 +2,21 @@ function getPosition(str, m, i) {
     return str.split(m, i).join(m).length;
 }
 
+function redirect(page, setting) {
+    if (setting === "namu-wiki") {
+        window.location.href = "https://namu.wiki/w/" + page;
+    }
+    else if (setting === "namu-mirror-wiki") {
+        window.location.href = "http://namu.mirror.wiki/wiki/" + page;
+    }
+    else if (setting === "dark-namu-wiki") {
+        window.location.href = "https://dark.namu.wiki/w/" + page;
+    }
+    else {
+        window.location.href = "https://namu.wiki/w/" + page;
+    }
+}
+
 chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe"], function (items) {
     var href, page, rigvedawikiNet, mirrorEnhaKr, mirPe;
 
@@ -15,57 +30,21 @@ chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe"], function (i
             return;
         }
         page = href.substr(getPosition(href, "/", 3) + 1);
-
-        if (rigvedawikiNet === "namu-wiki") {
-            window.location.href = "https://namu.wiki/w/" + page;
-        }
-        else if (rigvedawikiNet === "namu-mirror-wiki") {
-            window.location.href = "http://namu.mirror.wiki/wiki/" + page;
-        }
-        else if (rigvedawikiNet === "dark-namu-wiki") {
-            window.location.href = "https://dark.namu.wiki/w/" + page;
-        }
-        else {
-            window.location.href = "https://namu.wiki/w/" + page;
-        }
+        redirect(page, rigvedawikiNet);
     }
     else if (href.indexOf("mirror.enha") != -1) {
         if (mirrorEnhaKr === "none") {
             return;
         }
         page = href.substr(getPosition(href, "/", 4) + 1);
-
-        if (mirrorEnhaKr === "namu-wiki") {
-            window.location.href = "https://namu.wiki/w/" + page;
-        }
-        else if (mirrorEnhaKr === "namu-mirror-wiki") {
-            window.location.href = "http://namu.mirror.wiki/wiki/" + page;
-        }
-        else if (mirrorEnhaKr === "dark-namu-wiki") {
-            window.location.href = "https://dark.namu.wiki/w/" + page;
-        }
-        else {
-            window.location.href = "https://namu.wiki/w/" + page;
-        }
+        redirect(page, mirrorEnhaKr);
     }
     else if (href.indexOf("mir.pe") != -1) {
         if (mirPe === "none") {
             return;
         }
         page = href.substr(getPosition(href, "/", 4) + 1);
-
-        if (mirPe === "namu-wiki") {
-            window.location.href = "https://namu.wiki/w/" + page;
-        }
-        else if (mirPe === "namu-mirror-wiki") {
-            window.location.href = "http://namu.mirror.wiki/wiki/" + page;
-        }
-        else if (mirPe === "dark-namu-wiki") {
-            window.location.href = "https://dark.namu.wiki/w/" + page;
-        }
-        else {
-            window.location.href = "https://namu.wiki/w/" + page;
-        }
+        redirect(page, mirPe);
     }
 
 });
