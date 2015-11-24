@@ -23,6 +23,6 @@ http://pastebin.com/PVSrYUMF)
 * 0.2.1: 공식 로고 추가
 * 0.2.0: 설정 페이지 추가
 * 0.1.0: 첫 배포
-* 
+
 ## 라이센스
 MIT License. 라이센스 전문은 LICENSE에 있습니다.
