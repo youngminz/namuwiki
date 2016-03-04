@@ -20,11 +20,11 @@ function redirect(a, setting, regex) {
                 break;
 
             case "namu-mirror-wiki":
-                a.href = a.href.replace(regex, "https://namu.mirror.wiki/wiki");
+                a.href = a.href.replace(regex, "https://namu.mirror.wiki/w");
                 break;
 
             case "dark-namu-wiki":
-                a.href = a.href.replace(regex, "https://namu.mirror.wiki/wiki");
+                a.href = a.href.replace(regex, "https://namu.mirror.wiki/dark");
                 break;
 
             default:

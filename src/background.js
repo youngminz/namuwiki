@@ -7,10 +7,10 @@ function redirect(page, setting) {
         window.location.href = "https://namu.wiki/w/" + page;
     }
     else if (setting === "namu-mirror-wiki") {
-        window.location.href = "http://namu.mirror.wiki/wiki/" + page;
+        window.location.href = "https://namu.mirror.wiki/w/" + page;
     }
     else if (setting === "dark-namu-wiki") {
-        window.location.href = "https://dark.namu.wiki/w/" + page;
+        window.location.href = "https://namu.mirror.wiki/dark/" + page;
     }
     else {
         window.location.href = "https://namu.wiki/w/" + page;
