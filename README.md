@@ -8,6 +8,9 @@
 이 확장 프로그램의 버그를 찾으셨나요? 기여하고 싶으신가요? Issue를 남겨주시거나 Pull requests를 남겨주세요!
 
 ## 변경 사항
+* 0.5.1:
+  - [@yous](https://github.com/yous)님께서 수고해 주셨습니다. 감사합니다!
+    * mirror와 dark site의 URL 변경 대응
 * 0.5.0: 
   - [@yous](https://github.com/yous)님께서 수고해 주셨습니다. 
     * 내부 코드 리팩토링

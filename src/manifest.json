@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "나무위키",
     "description": "namu.moe 등의 사이트를 자동으로 나무위키로 리다이렉션합니다.",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "icons": {
         "128": "logo.png"
     },
