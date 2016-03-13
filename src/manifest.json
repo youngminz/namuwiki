@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "나무위키",
     "description": "namu.moe 등의 사이트를 자동으로 나무위키로 리다이렉션합니다.",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "icons": {
         "128": "logo.png"
     },
@@ -11,8 +11,10 @@
         "*://rigvedawiki.net/*",
         "*://mir.pe/*",
         "*://namu.moe/*",
+        "*://namu.wiki/*",
         "*://www.google.com/*",
         "*://www.google.co.kr/*",
+        "*://www.google.co.jp/*",
         "storage"
     ],
     "content_scripts": [
@@ -25,7 +27,9 @@
                 "*://mir.pe/*",
                 "*://*.mir.pe/*",
                 "*://namu.moe/*",
-                "*://*.namu.moe/*"
+                "*://*.namu.moe/*",
+                "*://namu.wiki/*",
+                "*://*.namu.wiki/*"
             ],
             "js": [
                 "background.js"
@@ -34,7 +38,8 @@
         {
             "matches": [
                 "*://www.google.com/*",
-                "*://www.google.co.kr/*"
+                "*://www.google.co.kr/*",
+                "*://www.google.co.jp/*"
             ],
             "js": [
                 "google_result.js"
