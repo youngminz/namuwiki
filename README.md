@@ -8,6 +8,10 @@
 이 확장 프로그램의 버그를 찾으셨나요? 기여하고 싶으신가요? Issue를 남겨주시거나 Pull requests를 남겨주세요!
 
 ## 변경 사항
+* 0.5.2:
+  - [@spr0tsuki](https://github.com/spr0tsuki)님과 [@yous](https://github.com/yous)님께서 수고해 주셨습니다. 감사합니다 :-)
+    * 동작 목록에 google.co.jp 추가 및 namu.wiki 설정 추가
+    * namu.mirror.wiki 리다이렉션 설정 추가
 * 0.5.1:
   - [@yous](https://github.com/yous)님께서 수고해 주셨습니다. 감사합니다!
     * mirror와 dark site의 URL 변경 대응
