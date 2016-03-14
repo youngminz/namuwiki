@@ -17,45 +17,53 @@ function redirect(page, setting) {
     }
 }
 
-chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe", "namuMoe", "namuWiki"], function (items) {
-    var href, page, rigvedawikiNet, mirrorEnhaKr, mirPe, namuMoe, namuWiki;
+chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe", "namuMirrorWiki", "namuMoe", "namuWiki"], function (items) {
+    var href, page, rigvedawikiNet, mirrorEnhaKr, mirPe, namuMirrorWiki, namuMoe, namuWiki;
 
     rigvedawikiNet = items["rigvedawikiNet"];
     mirrorEnhaKr = items["mirrorEnhaKr"];
     mirPe = items["mirPe"];
+    namuMirrorWiki = items["namuMirrorWiki"];
     namuMoe = items["namuMoe"];
     namuWiki = items["namuWiki"];
 
     href = window.location.href;
-    if (href.indexOf("rigvedawiki") != -1) {
+    if (href.indexOf("rigvedawiki") !== -1) {
         if (rigvedawikiNet === "none") {
             return;
         }
         page = href.substr(getPosition(href, "/", 3) + 1);
         redirect(page, rigvedawikiNet);
     }
-    else if (href.indexOf("mirror.enha") != -1) {
+    else if (href.indexOf("mirror.enha") !== -1) {
         if (mirrorEnhaKr === "none") {
             return;
         }
         page = href.substr(getPosition(href, "/", 4) + 1);
         redirect(page, mirrorEnhaKr);
     }
-    else if (href.indexOf("mir.pe") != -1) {
+    else if (href.indexOf("mir.pe") !== -1) {
         if (mirPe === "none") {
             return;
         }
         page = href.substr(getPosition(href, "/", 4) + 1);
         redirect(page, mirPe);
     }
-    else if (href.indexOf("namu.moe") != -1) {
+    else if (href.indexOf("namu.mirror.wiki") !== -1) {
+        if (namuMirrorWiki === "none") {
+            return;
+        }
+        page = href.substr(getPosition(href, "/", 4) + 1);
+        redirect(page, namuMirrorWiki);
+    }
+    else if (href.indexOf("namu.moe") !== -1) {
         if (namuMoe === "none") {
             return;
         }
         page = href.substr(getPosition(href, "/", 4) + 1);
         redirect(page, namuMoe);
     }
-    else if (href.indexOf("namu.wiki") != -1) {
+    else if (href.indexOf("namu.wiki") !== -1) {
         if (namuWiki === "none") {
             return;
         }
