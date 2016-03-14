@@ -36,10 +36,11 @@ function redirect(a, setting, regex) {
     }
 }
 
-chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe", "namuMoe", "namuWiki"], function (items) {
+chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe", "namuMirrorWiki", "namuMoe", "namuWiki"], function (items) {
     rigvedawikiNet = items["rigvedawikiNet"];
     mirrorEnhaKr = items["mirrorEnhaKr"];
     mirPe = items["mirPe"];
+    namuMirrorWiki = items["namuMirrorWiki"];
     namuMoe = items["namuMoe"];
     namuWiki = items["namuWiki"];
 });
@@ -53,9 +54,10 @@ setInterval(function() {
             var rigvedawikiKrNetRegexNew = new RegExp("https?:\/\/([a-z0-9]+[.])*rigvedawiki\.net");
             var mirrorEnhaKrRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*enha\.kr\/wiki");
             var mirPeRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*mir\.pe\/wiki");
+            var namuMirrorWikiRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*namu\.mirror\.wiki\/w");
             var namuMoeRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*namu\.moe\/w");
             var namuWikiRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*namu\.wiki\/w");
-            if (rigvedawikiKrNetRegexNew.test(a.href) || mirrorEnhaKrRegex.test(a.href) || mirPeRegex.test(a.href) || namuMoeRegex.test(a.href) || namuWikiRegex.test(a.href)) {
+            if (rigvedawikiKrNetRegexNew.test(a.href) || mirrorEnhaKrRegex.test(a.href) || mirPeRegex.test(a.href) || namuMirrorWikiRegex.test(a.href) || namuMoeRegex.test(a.href) || namuWikiRegex.test(a.href)) {
                 a.className += " replaced";
 
                 // 예전의 URL 형식인지 먼저 확인한다. 이를 통과하게 되면 최신 갱신된 URL 형식의 테스트를 통과할 수 없다.
@@ -64,6 +66,7 @@ setInterval(function() {
                 redirect(a, rigvedawikiNet, rigvedawikiKrNetRegexNew);
                 redirect(a, mirrorEnhaKr, mirrorEnhaKrRegex);
                 redirect(a, mirPe, mirPeRegex);
+                redirect(a, namuMirrorWiki, namuMirrorWikiRegex);
                 redirect(a, namuMoe, namuMoeRegex);
                 redirect(a, namuWiki, namuWikiRegex);
 
