@@ -6,11 +6,13 @@
 // @author       Song Hyo Jin (shj at xenosi.de)
 // @match        https://www.google.com/*
 // @match        https://www.google.co.kr/*
+// @match        https://www.google.co.jp/*
 // @match        http://www.google.com/*
 // @match        http://www.google.co.kr/*
+// @match        http://www.google.co.jp/*
 // @grant        none
 // ==/UserScript==
-var rigvedawikiNet, mirrorEnhaKr, mirPe, namuMoe;
+var rigvedawikiNet, mirrorEnhaKr, mirPe, namuMoe, namuWiki;
 
 function redirect(a, setting, regex) {
     if (regex.test(a.href)) {
@@ -34,11 +36,12 @@ function redirect(a, setting, regex) {
     }
 }
 
-chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe", "namuMoe"], function (items) {
+chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe", "namuMoe", "namuWiki"], function (items) {
     rigvedawikiNet = items["rigvedawikiNet"];
     mirrorEnhaKr = items["mirrorEnhaKr"];
     mirPe = items["mirPe"];
     namuMoe = items["namuMoe"];
+    namuWiki = items["namuWiki"];
 });
 
 setInterval(function() {
@@ -51,7 +54,8 @@ setInterval(function() {
             var mirrorEnhaKrRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*enha\.kr\/wiki");
             var mirPeRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*mir\.pe\/wiki");
             var namuMoeRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*namu\.moe\/w");
-            if (rigvedawikiKrNetRegexNew.test(a.href) || mirrorEnhaKrRegex.test(a.href) || mirPeRegex.test(a.href) || namuMoeRegex.test(a.href)) {
+            var namuWikiRegex = new RegExp("https?:\/\/([a-z0-9]+[.])*namu\.wiki\/w");
+            if (rigvedawikiKrNetRegexNew.test(a.href) || mirrorEnhaKrRegex.test(a.href) || mirPeRegex.test(a.href) || namuMoeRegex.test(a.href) || namuWikiRegex.test(a.href)) {
                 a.className += " replaced";
 
                 // 예전의 URL 형식인지 먼저 확인한다. 이를 통과하게 되면 최신 갱신된 URL 형식의 테스트를 통과할 수 없다.
@@ -61,6 +65,7 @@ setInterval(function() {
                 redirect(a, mirrorEnhaKr, mirrorEnhaKrRegex);
                 redirect(a, mirPe, mirPeRegex);
                 redirect(a, namuMoe, namuMoeRegex);
+                redirect(a, namuWiki, namuWikiRegex);
 
                 a.removeAttribute("onmousedown");
                 var b = a.cloneNode(true);
