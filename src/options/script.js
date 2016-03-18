@@ -29,7 +29,7 @@ function restore_options () {
         mirPe: "namu-wiki",
         namuMirrorWiki: "namu-mirror-wiki",
         namuMoe: "namu-wiki",
-        namuWiki: "namu-wiki"
+        namuWiki: "none"
     }, function (items) {
         document.getElementById("rigvedawiki-net").value = items.rigvedawikiNet;
         document.getElementById("mirror-enha-kr").value = items.mirrorEnhaKr;

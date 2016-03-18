@@ -12,9 +12,6 @@ function redirect(page, setting) {
     else if (setting === "dark-namu-wiki") {
         window.location.href = "https://namu.mirror.wiki/dark/" + page;
     }
-    else {
-        window.location.href = "https://namu.wiki/w/" + page;
-    }
 }
 
 chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe", "namuMirrorWiki", "namuMoe", "namuWiki"], function (items) {
@@ -49,8 +46,15 @@ chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe", "namuMirrorW
         page = href.substr(getPosition(href, "/", 4) + 1);
         redirect(page, mirPe);
     }
-    else if (href.indexOf("namu.mirror.wiki") !== -1) {
-        if (namuMirrorWiki === "none") {
+    else if (href.indexOf("namu.mirror.wiki/w/") !== -1) {
+        if (namuMirrorWiki === "none" || namuWiki === "namu-mirror-wiki") {
+            return;
+        }
+        page = href.substr(getPosition(href, "/", 4) + 1);
+        redirect(page, namuMirrorWiki);
+    }
+    else if (href.indexOf("namu.mirror.wiki/dark/") !== -1) {
+        if (namuMirrorWiki === "none" || namuWiki === "dark-namu-wiki") {
             return;
         }
         page = href.substr(getPosition(href, "/", 4) + 1);
@@ -64,7 +68,7 @@ chrome.storage.sync.get(["rigvedawikiNet", "mirrorEnhaKr", "mirPe", "namuMirrorW
         redirect(page, namuMoe);
     }
     else if (href.indexOf("namu.wiki") !== -1) {
-        if (namuWiki === "none") {
+        if (namuWiki === "none" || namuWiki === "namu-wiki") {
             return;
         }
         page = href.substr(getPosition(href, "/", 4) + 1);
